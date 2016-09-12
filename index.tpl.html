@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="EventApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Event App</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/angular-growl/build/angular-growl.min.css">
+    <link rel="stylesheet" href="assets/css/style.min.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a ui-sref="home">Home</a></li>
+            <li><a ui-sref="user.create">Signup</a></li>
+            <li><a ui-sref="event.create">Create Event</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div growl></div>
+    <div ui-view></div>
+
+    <!-- External Packages -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+    <script src="bower_components/angular-growl/build/angular-growl.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+
+    <!-- Main Module  -->
+    <script src="script.js"></script>
+
+    <!-- User Module -->
+    <script src="dist/modules/user/create/user.signup.ctrl.js"></script>
+    <script src="dist/modules/user/create/user.signup.service.js"></script>
+
+    <!-- Event Module -->
+    <script src="dist/modules/home/home.ctrl.js"></script>
+    <script src="dist/modules/event/create/event.create.ctrl.js"></script>
+    <script src="dist/modules/event/event.service.js"></script>
+
+    <!-- Assets -->
+    <script src="assets/js/style.js"></script>
+  </body>
+</html>

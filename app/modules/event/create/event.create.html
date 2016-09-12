@@ -1,0 +1,121 @@
+<div class="container event-create-form">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 card">
+      <legend>Create Event</legend>
+      <div class="progress">
+        <div class="progress-bar" style="width: {{ViewModel.progress}}%;"></div>
+      </div>
+      <form role="form" name="ViewModel.createEventForm">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="name">Event Name:</label>
+              <input type="text" class="form-control" id="name" name="name" ng-model="ViewModel.event.name" required ng-pattern="/^[a-z A-Z]+$/" ng-blur="ViewModel.checkValidity(ViewModel.event.name,'name')" placeholder="Birthday party">
+              <div ng-messages="ViewModel.createEventForm.name.$error" ng-show="ViewModel.createEventForm.name.$touched" class="error">
+                <div ng-message="required">Event Name is required.</div>
+                <div ng-message="pattern">Only alphabets please.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="host">Host Name:</label>
+              <input type="text" class="form-control" id="host" name="host" ng-model="ViewModel.event.hostName" required ng-pattern="/^[a-z A-Z]+$/" ng-blur="ViewModel.checkValidity(ViewModel.event.hostName,'hostName')" placeholder="John Doe">
+              <div ng-messages="ViewModel.createEventForm.host.$error" ng-show="ViewModel.createEventForm.host.$touched" class="error">
+                <div ng-message="required">Host Name is required.</div>
+                <div ng-message="pattern">Only alphabets please.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="eventType">Event Type:</label>
+              <input type="text" class="form-control" id="eventType" name="eventType" ng-model="ViewModel.event.eventType" required ng-blur="ViewModel.checkValidity(ViewModel.event.eventType,'eventtype')" placeholder="Birthday party, Conference talk etc">
+              <div ng-messages="ViewModel.createEventForm.eventType.$error" ng-show="ViewModel.createEventForm.eventType.$touched" class="error">
+                <div ng-message="required">Event type is required.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="location">Location:</label>
+              <input
+              type="text"
+              class="form-control"
+              id="location"
+              name="location"
+              ng-model="ViewModel.event.location"
+              required
+              ng-blur="ViewModel.checkValidity(ViewModel.event.location,'location')"
+              placeholder="Vadodara, IN"
+              ng-focus="ViewModel.geoLocate()">
+              <div ng-messages="ViewModel.createEventForm.location.$error" ng-show="ViewModel.createEventForm.location.$touched" class="error">
+                <div ng-message="required">Location is required.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="start_time">Start Time:</label>
+              <input
+              type="datetime-local"
+              class="form-control"
+              name="start_time"
+              id="start_time"
+              ng-model="ViewModel.event.startTime"
+              required
+              ng-blur="ViewModel.checkValidity(ViewModel.event.startTime,'startTime')">
+              <div
+              ng-messages="ViewModel.createEventForm.start_time.$error" ng-show="ViewModel.createEventForm.start_time.$touched"
+              class="error">
+                <div ng-message="required">Start Time is required.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="end_time">End Time:</label>
+              <input type="datetime-local" class="form-control" id="end_time" name="end_time" ng-model="ViewModel.event.endTime" required ng-blur="ViewModel.checkValidity(ViewModel.event.endTime,'endTime')">
+              <div ng-messages="ViewModel.createEventForm.end_time.$error" ng-show="ViewModel.createEventForm.end_time.$touched" class="error">
+                <div ng-message="required">End Time is required.</div>
+              </div>
+              <span ng-if='ViewModel.event.startTime > ViewModel.event.endTime' class="error">
+                End Time has to be more than Start Time.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="guestList">Guest list:</label>
+              <textarea
+              class="form-control"
+              id="guestList"
+              name="guestlist"
+              ng-model="ViewModel.event.guestList"
+              ng-blur="ViewModel.checkValidity(ViewModel.event.guestList,'guestlist')"
+              required></textarea>
+              <div ng-messages="ViewModel.createEventForm.guestlist.$error" ng-show="ViewModel.createEventForm.guestlist.$touched" class="error">
+                <div ng-message="required">Guest List is required.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="msg">Message:</label>
+              <textarea class="form-control" id="msg" ng-model="ViewModel.event.message"></textarea>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary form-control" type="button" ng-click="ViewModel.create()" ng-disabled="ViewModel.createEventForm.$invalid">Create Event</button>
+      </form>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

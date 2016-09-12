@@ -1,0 +1,21 @@
+<div class="container event-list">
+  <div class="row">
+    <div class="col-md-12">
+        <h4 ng-if='!ViewModel.events' class="card text-center">
+          No Events found! <br>
+          Why not <a ui-sref='event.create'>Create one?</a>
+        </h4>
+        <div class="row" ng-if='ViewModel.events'>
+          <div ng-repeat="event in ViewModel.events" class="col-md-4">
+            <div class="card event-card">
+              <h5>{{ event.name }}</h5>
+              <h6 ng-if="event.message"><strong>Description</strong> - {{ event.message }}</h6>
+              <h6><strong>Start Time</strong> - {{ event.startTime }}</h6>
+              <h6><strong>End Time</strong> - {{ event.endTime }}</h6>
+              <h6><strong>Location</strong> - {{ event.location }}</h6>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

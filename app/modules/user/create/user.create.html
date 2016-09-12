@@ -1,0 +1,71 @@
+<div class="container user-signup-form">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 card">
+      <legend>Signup</legend>
+      <div class="progress">
+        <div class="progress-bar" style="width: {{ViewModel.progress}}%;"></div>
+      </div>
+      <form role="form" name="ViewModel.userSignupForm" novalidate>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" class="form-control" id="name" name="name" ng-model="ViewModel.user.name" required ng-minlength="3" placeholder="John Doe" ng-pattern="/^[a-z A-Z]+$/" ng-blur="ViewModel.checkValidity(ViewModel.user.name,'name')">
+              <div ng-messages="ViewModel.userSignupForm.name.$error" ng-show="ViewModel.userSignupForm.name.$touched" class="error">
+                <div ng-message="required">Name is required.</div>
+                <div ng-message="minlength">Name has to be of minimum 3 digits.</div>
+                <div ng-message="pattern">Only alphabets please.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="email">Email address:</label>
+              <input type="text" class="form-control" id="email" name="email" ng-model="ViewModel.user.email" required placeholder="john@doe.com" ng-blur="ViewModel.checkValidity(ViewModel.user.email,'email')" ng-pattern='/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/'>
+              <div ng-messages="ViewModel.userSignupForm.email.$error" ng-show="ViewModel.userSignupForm.email.$touched" class="error">
+                <div ng-message="required">Email is required.</div>
+                <div ng-message="pattern">Email does not look to be in right format.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="pwd">Password:</label>
+              <input type="password" class="form-control" id="pwd" name="pwd" ng-model="ViewModel.user.password" required ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" ng-blur="ViewModel.checkValidity(ViewModel.user.password,'password')">
+              <div ng-messages="ViewModel.userSignupForm.pwd.$error" ng-show="ViewModel.userSignupForm.pwd.$touched" class="error">
+                <div ng-message="required">Password is required.</div>
+                <div ng-message="pattern">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol)</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="employer">Employer:</label>
+              <input type="text" class="form-control" id="employer" name="employer" ng-model="ViewModel.user.employer">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="jobtitle">Job Title:</label>
+              <input type="text" class="form-control" id="jobtitle" name="jobtitle" ng-model="ViewModel.user.jobtitle">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="birthDate">Birth Date:</label>
+              <input type="date" class="form-control" id="birthDate" ng-model="ViewModel.user.birthDate">
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary form-control" type="button" ng-click="ViewModel.signup()" ng-disabled="ViewModel.userSignupForm.$invalid">Signup</button>
+      </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
